@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class TokenKind(Enum):
     PLUS = "+"
     MINOS = "-"
@@ -8,6 +9,7 @@ class TokenKind(Enum):
     LPAREN = "("
     RPAREN = ")"
     NUM = "number"
+
 
 class Token:
     def __init__(self, token_kind: TokenKind, index: int, value=None):

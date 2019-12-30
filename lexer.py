@@ -2,6 +2,7 @@ from typing import List, Union
 
 from type_collection.tokens import Token, TokenKind
 
+
 class Lexer:
     def __init__(self, code: str):
         self._index = 0
@@ -40,5 +41,3 @@ class Lexer:
 
     def _is_finised(self):
         return self._index == self._end
-
-

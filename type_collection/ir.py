@@ -1,5 +1,6 @@
 from enum import Enum, auto
 
+
 class Temp():
     def __init__(self, num):
         self._num = num
@@ -7,6 +8,7 @@ class Temp():
     @property
     def num(self):
         return self._num
+
 
 class IrNodeKind(Enum):
     Imm = auto()
@@ -18,6 +20,7 @@ class IrNodeKind(Enum):
     Kill = auto()
     Return = auto()
     Nop = auto()
+
 
 class IrNode:
     def __init__(self, nodekind: IrNodeKind, arg1=None, arg2=None):
