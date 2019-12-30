@@ -1,8 +1,8 @@
 from type_collection.ast import Expr, ExprKind
 from type_collection.ir import Temp, IrNode, IrNodeKind
 
-class IrGenerator:
 
+class IrGenerator:
     def __init__(self):
         self._next_temp = Temp(0)
         self._ir_seq = []

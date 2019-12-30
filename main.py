@@ -6,6 +6,7 @@ from parser import Parser
 from ir_generator import IrGenerator
 from code_gen import CodeGenerator
 
+
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument("expr", type=str)
@@ -20,6 +21,7 @@ def prologue(asm):
     result += "main:\n"
     result += asm
     return result
+
 
 if __name__ == "__main__":
     args = parse_args()

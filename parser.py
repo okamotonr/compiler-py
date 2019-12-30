@@ -2,20 +2,21 @@ from typing import List, Union
 from enum import Enum
 
 from type_collection.tokens import Token, TokenKind
-from type_collection.ast import Expr, ExprKind 
+from type_collection.ast import Expr, ExprKind
+
 
 class Parser:
     def __init__(self, token_stream: List[Token]):
         self._index = 0
         self._token_stream = token_stream
         self._end = len(self._token_stream)
-    
+
     def parser(self):
         return self.exper()
 
     def exper(self):
         expr = self.term()
-        return expr 
+        return expr
 
     def term(self):
         lhs = self.factor()
@@ -23,7 +24,7 @@ class Parser:
             if self._token_stream[self._index].token_kind == TokenKind.PLUS:
                 self._index += 1
                 rhs = self.factor()
-                lhs = Expr(ExprKind.ADD , lhs, rhs)
+                lhs = Expr(ExprKind.ADD, lhs, rhs)
             elif self._token_stream[self._index].token_kind == TokenKind.MINOS:
                 self._index += 1
                 rhs = self.factor()
@@ -52,7 +53,7 @@ class Parser:
     def prime(self):
 
         token = self._token_stream[self._index]
-        
+
         if token.token_kind == TokenKind.NUM:
             expr = Expr(ExprKind.NUM, value=token.value)
             self._index += 1
@@ -65,7 +66,7 @@ class Parser:
             parser = self.copy(self._index, r_parlen_index)
             expr = parser.exper()
             self._index = r_parlen_index + 1
-    
+
         return expr
 
     def find_parlen(self):
@@ -83,15 +84,12 @@ class Parser:
                 else:
                     count -= 1
             index += 1
-        
-        return ret 
+
+        return ret
 
     def copy(self, start: int, end: int):
         in_parlen = self._token_stream[start:end]
         return Parser(in_parlen)
 
-
     def _is_finished(self):
         return self._index == self._end
-
-        
